@@ -95,6 +95,7 @@ elasticsearch.hosts: ["http://172.31.80.230:9200"]
 
 # Enables you specify a file where Kibana stores log output.
 #logging.dest: stdout
+logging.dest: /var/log/kibana/kibana.log
 
 # Set the value of this setting to true to suppress all logging output.
 #logging.silent: false
@@ -105,6 +106,7 @@ elasticsearch.hosts: ["http://172.31.80.230:9200"]
 # Set the value of this setting to true to log all events, including system usage information
 # and all requests.
 #logging.verbose: false
+logging.verbose: true
 
 # Set the interval in milliseconds to sample system and process performance
 # metrics. Minimum is 100ms. Defaults to 5000.

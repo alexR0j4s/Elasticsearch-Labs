@@ -1,0 +1,60 @@
+# ======================== Elasticsearch Instalación =========================
+#
+# -------------------------#1 Instalación Elasticsearch-----------------------
+#
+#Install Debian Package manually
+    wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.6.0-amd64.deb
+    wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.6.0-amd64.deb.sha512
+    shasum -a 512 -c elasticsearch-7.6.0-amd64.deb.sha512 
+    sudo dpkg -i elasticsearch-7.6.0-amd64.deb
+
+#Running Elasticsearch (systemd)
+    sudo /bin/systemctl daemon-reload
+    sudo /bin/systemctl enable elasticsearch.service
+
+# ------------------------ #2 Configurar elasticsearch.yml -------------------
+#elasticsearch.yml
+    cluster.name
+    node.name
+    path.data
+    path.logs
+    bootstrap.memory_lock
+    network.host (_local_, _site_, _global_, _[networkInterface]_)
+    http.port
+    discovery.seed_hosts (["server1","server2","server3"]
+    cluster.initial_master_nodes
+    http.host
+    transport.tcp.port (9300-9399)
+#jvm.options
+    -XMS
+    -XMX
+
+
+# ------------------------ #3 Instalación Kibana -----------------------------
+#Install Debian Package manually
+    wget https://artifacts.elastic.co/downloads/kibana/kibana-7.6.0-amd64.deb
+    shasum -a 512 kibana-7.6.0-amd64.deb
+    sudo dpkg -i kibana-7.6.0-amd64.deb
+
+#Running Elasticsearch (systemd)
+    sudo /bin/systemctl daemon-reload
+    sudo /bin/systemctl enable kibana.service
+    sudo systemctl start kibana.service
+    sudo systemctl stop kibana.service
+    sudo systemctl status kibana.service
+    curl -X GET "http://172.31.80.86:5601/"
+
+# ------------------------ #4 Configurar Kibana.yml ----------------------------
+# ------------------------------------ Node ------------------------------------
+#
+# ----------------------------------- Paths ------------------------------------
+#
+# ----------------------------------- Memory -----------------------------------
+#
+# ---------------------------------- Network -----------------------------------
+#
+# --------------------------------- Discovery ----------------------------------
+#
+# ---------------------------------- Gateway -----------------------------------
+#
+# ---------------------------------- Various -----------------------------------
